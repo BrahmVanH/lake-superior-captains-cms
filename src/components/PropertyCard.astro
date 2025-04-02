@@ -9,20 +9,16 @@ interface Props {
 const { gallery, property } = Astro.props;
 ---
 
-<!-- StyledCard -->
-<div>
-	<!-- CardContainer -->
-	<div>
-		<!-- Title Container -->
-		<div>
+<div class='w-[80%] bg-white mb-8 p-4'>
+	<div class='flex flex-row justify-around'>
+		<div class='flex flex-col items-center pr-4 m-8 mr-0 border-r-0 md:border-3 border-transparent border-b-0 md:border-b-3 border-gradient-primary'>
 			<div>
 				<h1>{property.propertyName}</h1>
 			</div>
-			<!-- BtnContainer -->
-			<div>
+			<div class='flex flex-col items-center'>
 				<!-- add tooltip "edit propery name and description" -->
 				<!--Link wrapped around StyledBtn just style the a tag -->
-				<a>Property info</a>
+				<a class='mb-1'>Property info</a>
 				<!-- tooltip upload and elete property photos -->
 				<a> Photos </a>
 				<!-- tooltip edit availability calendar -->
@@ -30,11 +26,11 @@ const { gallery, property } = Astro.props;
 			</div>
 		</div>
 
-    <!-- ImgGalContainer -->
-     <div>
-      <!-- ImageGallery -->
-     </div>
+		<!-- ImgGalContainer -->
+		<div>
+			<!-- ImageGallery -->
+		</div>
 	</div>
-  <!-- EditPropertyOverlay -->
-   <!-- CalendarOverlay -->
+	<!-- EditPropertyOverlay -->
+	<!-- CalendarOverlay -->
 </div>

@@ -123,3 +123,10 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+.border-gradient-primary {
+	border-image-source: linear-gradient(white, var(--tertiary), var(--primary), var(--tertiary), white);
+	border-image-slice: 1;
+	border-image-outset: 0;
+	border-image-repeat: stretch;
+}
