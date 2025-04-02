@@ -12,7 +12,7 @@ export const CREATE_USER = /* GraphQL */  gql`
 			}
 		}
 	}
-`);
+`;
 
 export const LOGIN_USER = /* GraphQL */  gql`
 	mutation LoginUser($input: LoginUserInput!) {
@@ -26,7 +26,7 @@ export const LOGIN_USER = /* GraphQL */  gql`
 			}
 		}
 	}
-`);
+`;
 
 export const DELETE_USER = /* GraphQL */  gql`
 	mutation removeUser($input: RemoveUserInput!) {
@@ -40,7 +40,7 @@ export const DELETE_USER = /* GraphQL */  gql`
 			}
 		}
 	}
-`);
+`;
 
 export const CREATE_BOOKING = /* GraphQL */  gql`
 	mutation CreateBooking($input: CreateBookingInput!) {
@@ -49,7 +49,7 @@ export const CREATE_BOOKING = /* GraphQL */  gql`
 			propertyId
 		}
 	}
-`);
+`;
 
 export const DELETE_BOOKING = /* GraphQL */  gql`
 	mutation removeBooking($input: RemoveBookingInput!) {
@@ -57,7 +57,7 @@ export const DELETE_BOOKING = /* GraphQL */  gql`
 			deletedCount
 		}
 	}
-`);
+`;
 
 export const UPDATE_PROPERTY_INFO = /* GraphQL */  gql`
 	mutation UpdatePropertyInfo($input: UpdatePropertyInput!) {
@@ -72,7 +72,7 @@ export const UPDATE_PROPERTY_INFO = /* GraphQL */  gql`
 			headerImgKey
 		}
 	}
-`);
+`;
 
 export const DELETE_S3_IMGS = /* GraphQL */  gql`
 	mutation DeleteS3Objects($input: DeleteS3ObjectInput!) {
@@ -81,4 +81,4 @@ export const DELETE_S3_IMGS = /* GraphQL */  gql`
 			message
 		}
 	}
-`);
+`;

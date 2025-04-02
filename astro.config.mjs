@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -12,6 +12,14 @@ export default defineConfig({
 	},
 	experimental: {
 		svg: true,
+	},
+	env: {
+		schema: {
+			API_URL_DEV: envField.string({
+				context: 'server',
+				access: 'public',
+			}),
+		},
 	},
 
 	integrations: [react()],

@@ -1,0 +1,40 @@
+---
+import type { ImageObject, Property } from '@/lib/__generated__/types';
+
+interface Props {
+	gallery: ImageObject[];
+	property: Property;
+}
+
+const { gallery, property } = Astro.props;
+---
+
+<!-- StyledCard -->
+<div>
+	<!-- CardContainer -->
+	<div>
+		<!-- Title Container -->
+		<div>
+			<div>
+				<h1>{property.propertyName}</h1>
+			</div>
+			<!-- BtnContainer -->
+			<div>
+				<!-- add tooltip "edit propery name and description" -->
+				<!--Link wrapped around StyledBtn just style the a tag -->
+				<a>Property info</a>
+				<!-- tooltip upload and elete property photos -->
+				<a> Photos </a>
+				<!-- tooltip edit availability calendar -->
+				<a>Calendar</a>
+			</div>
+		</div>
+
+    <!-- ImgGalContainer -->
+     <div>
+      <!-- ImageGallery -->
+     </div>
+	</div>
+  <!-- EditPropertyOverlay -->
+   <!-- CalendarOverlay -->
+</div>

@@ -8,7 +8,7 @@ export const GET_ALL_USERS = /* GraphQL */  gql`
 			username
 		}
 	}
-`);
+`;
 
 export const QUERY_BOOKINGS_BY_PROPERTY = /* GraphQL */  gql`
 	query QueryBookingsByProperty($propertyId: ID!) {
@@ -18,7 +18,7 @@ export const QUERY_BOOKINGS_BY_PROPERTY = /* GraphQL */  gql`
 			propertyId
 		}
 	}
-`);
+`;
 
 export const GET_HOME_IMGS = /* GraphQL */  gql`
 	query GetHomePgImgs {
@@ -28,7 +28,7 @@ export const GET_HOME_IMGS = /* GraphQL */  gql`
 			cottageImgUrl
 		}
 	}
-`);
+`;
 
 export const GET_HIDEAWAY_IMGS = /* GraphQL */  gql`
 	query GetHideawayImgs {
@@ -43,7 +43,7 @@ export const GET_HIDEAWAY_IMGS = /* GraphQL */  gql`
 			}
 		}
 	}
-`);
+`;
 
 export const GET_COTTAGE_IMGS = /* GraphQL */  gql`
 	query GetCottageImgs {
@@ -57,13 +57,13 @@ export const GET_COTTAGE_IMGS = /* GraphQL */  gql`
 			}
 		}
 	}
-`);
+`;
 
 export const GET_ABOUT_IMGS = /* GraphQL */  gql`
 	query GetAboutPgImg {
 		getAboutPgImg
 	}
-`);
+`;
 
 export const GET_PROPERTY_INFO = /* GraphQL */  gql`
 	query GetPropertyInfo($_id: ID!) {
@@ -78,7 +78,7 @@ export const GET_PROPERTY_INFO = /* GraphQL */  gql`
 			headerImgKey
 		}
 	}
-`);
+`;
 
 export const GET_PROPERTIES = /* GraphQL */  gql`
 	query GetProperties {
@@ -93,10 +93,10 @@ export const GET_PROPERTIES = /* GraphQL */  gql`
 			headerImgKey
 		}
 	}
-`);
+`;
 
 export const GET_PRESEIGNED_URL = /* GraphQL */  gql`
 	query GetPresignedS3Url($imgKey: String!, $commandType: String!, $altTag: String!) {
 		getPresignedS3Url(imgKey: $imgKey, commandType: $commandType, altTag: $altTag)
 	}
-`);
+`;
