@@ -23,7 +23,7 @@ export async function graphQLFetch<T extends GraphQLData>(query: string, variabl
 		}
 
 		if (!res.ok) {
-			console.log('GQL Fetch response for not okay: ', res.statusText);
+			console.log('GQL Fetch response not okay: ', res.statusText);
 			throw new Error(`${res.status}: ${res.statusText}`);
 		}
 
@@ -39,14 +39,36 @@ export async function graphQLFetch<T extends GraphQLData>(query: string, variabl
 	}
 }
 
-export async function fetchPropertyImgs(propertyName: PropertyNames) {
+export async function fetchPropertyImgs<T extends GraphQLData>(propertyName: PropertyNames) {
 	const { HIDEAWAY, COTTAGE } = PropertyNames;
 
 	try {
 		if (propertyName === HIDEAWAY) {
-			return await graphQLFetch(GET_HIDEAWAY_IMGS);
+			const res = await graphQLFetch(GET_HIDEAWAY_IMGS);
+			if (res) {
+				console.log('res', res);
+			}
+
+			if (!res.getHideawayImgs) {
+				console.log('GQL Fetch response for hideaway images not okay: ', res.statusText);
+				throw new Error(`${res.status}: ${res.statusText}`);
+			}
+
+			return res.getHideawayImgs.galleryArray;
 		} else if (propertyName === COTTAGE) {
-			return await graphQLFetch(GET_COTTAGE_IMGS);
+			console.log('get_cottage_images query: ', GET_COTTAGE_IMGS);
+			const res = await graphQLFetch(GET_COTTAGE_IMGS);
+
+			if (res) {
+				console.log('res', res);
+			}
+
+			if (!res.getCottageImgs) {
+				console.log('GQL Fetch response for cottage images not okay: ', res.statusText);
+				throw new Error(`${res.status}: ${res.statusText}`);
+			}
+
+			return res.getCottageImgs.galleryArray;
 		}
 	} catch (e) {
 		console.error('Error fetching property images for dashboard: ', e);

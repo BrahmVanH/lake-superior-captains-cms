@@ -7,7 +7,9 @@ import Layout from '../layouts/Layout.astro';
 import { graphQLFetch, fetchPropertyImgs, PropertyNames } from '@/lib/API/index';
 
 import { GET_COTTAGE_IMGS, GET_HIDEAWAY_IMGS, GET_PROPERTIES as query } from '@/lib/API/queries';
-import type { Property } from '@/lib/__generated__/types';
+import type { ImageObject, Property } from '@/lib/__generated__/types';
+import PropertyCard, { type Props as CardProps } from '@/components/PropertyCard';
+import PropertyCardConsole from '@/components/PropertyCardConsole';
 
 console.log(API_URL_DEV);
 const gqlRes = await graphQLFetch(query);
@@ -20,16 +22,33 @@ if (!gqlRes?.getProperties) {
 
 const properties: Property[] = gqlRes.getProperties;
 
-const propertiesCardData = await properties.map(async (property) => {
-	const imgs = await fetchPropertyImgs(property.propertyName as PropertyNames);
-	if (!imgs) {
-		throw new Error('No imgs returned from fetch request');
+let propertiesCardData;
+async function createCardProps(ps: Property[]): Promise<CardProps[]> {
+	try {
+		return Promise.all(
+			ps.map(async (property: Property) => {
+				const imgs: ImageObject[] = await fetchPropertyImgs(property.propertyName as PropertyNames);
+				if (!imgs) {
+					throw new Error('No imgs returned from fetch request');
+				}
+				return {
+					gallery: imgs,
+					info: property,
+				};
+			})
+		);
+	} catch (e) {
+		console.error('Error creating Card Props', e);
+		throw new Error(`Error creating Card Props: ${e}`);
 	}
-	return {
-		galleryArray: imgs,
-		property,
-	};
-});
+}
+
+const cardProps = await createCardProps(properties);
+console.log("cardProps: ", cardProps)
 ---
 
-<Layout title={'Dashboard'} >
+<Layout title={'Dashboard'}>
+	<div class='flex flex-col justify-center items-center mt-8'>
+		<PropertyCardConsole client:only propertyCardData={cardProps} />
+	</div>
+</Layout>

@@ -218,3 +218,105 @@ export type ImageObject = {
   thumbnail: Scalars['String']['output'];
   thumbnailAlt: Scalars['String']['output'];
 };
+
+export type CreateUserMutationVariables = Exact<{
+  input: CreateUserInput;
+}>;
+
+
+export type CreateUserMutation = { __typename?: 'Mutation', createUser: { __typename?: 'Auth', token: string, user: { __typename?: 'User', _id?: string | null, firstName: string, lastName: string, username: string } } };
+
+export type LoginUserMutationVariables = Exact<{
+  input: LoginUserInput;
+}>;
+
+
+export type LoginUserMutation = { __typename?: 'Mutation', loginUser: { __typename?: 'Auth', token: string, user: { __typename?: 'User', _id?: string | null, firstName: string, lastName: string, username: string } } };
+
+export type RemoveUserMutationVariables = Exact<{
+  input: RemoveUserInput;
+}>;
+
+
+export type RemoveUserMutation = { __typename?: 'Mutation', removeUser: { __typename?: 'Auth', token: string, user: { __typename?: 'User', _id?: string | null, firstName: string, lastName: string, username: string } } };
+
+export type CreateBookingMutationVariables = Exact<{
+  input: CreateBookingInput;
+}>;
+
+
+export type CreateBookingMutation = { __typename?: 'Mutation', createBooking: Array<{ __typename?: 'Booking', dateValue: string, propertyId: string } | null> };
+
+export type RemoveBookingMutationVariables = Exact<{
+  input: RemoveBookingInput;
+}>;
+
+
+export type RemoveBookingMutation = { __typename?: 'Mutation', removeBooking: { __typename?: 'RemoveBookingResponse', deletedCount: number } };
+
+export type UpdatePropertyInfoMutationVariables = Exact<{
+  input: UpdatePropertyInput;
+}>;
+
+
+export type UpdatePropertyInfoMutation = { __typename?: 'Mutation', updatePropertyInfo: { __typename?: 'Property', _id: string, propertyName: string, propertyDescription: string, headerImgKey: string, amenities: Array<{ __typename?: 'Amenity', amenityName: string, amenityType: string }> } };
+
+export type DeleteS3ObjectsMutationVariables = Exact<{
+  input: DeleteS3ObjectInput;
+}>;
+
+
+export type DeleteS3ObjectsMutation = { __typename?: 'Mutation', deleteS3Objects: { __typename?: 'DeleteS3ObjectResponse', status: number, message: string } };
+
+export type GetAllUsersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllUsersQuery = { __typename?: 'Query', getAllUsers?: Array<{ __typename?: 'User', firstName: string, lastName: string, username: string }> | null };
+
+export type QueryBookingsByPropertyQueryVariables = Exact<{
+  propertyId: Scalars['ID']['input'];
+}>;
+
+
+export type QueryBookingsByPropertyQuery = { __typename?: 'Query', queryBookingsByProperty?: Array<{ __typename?: 'Booking', _id: string, dateValue: string, propertyId: string }> | null };
+
+export type GetHomePgImgsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetHomePgImgsQuery = { __typename?: 'Query', getHomePgImgs: { __typename?: 'homePgImgPack', headerImgUrl: string, hideawayImgUrl: string, cottageImgUrl: string } };
+
+export type GetHideawayImgsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetHideawayImgsQuery = { __typename?: 'Query', getHideawayImgs: { __typename?: 'hideawayImgPack', headerUrl: string, galleryArray: Array<{ __typename?: 'imageObject', imgKey: string, original: string, thumbnail: string, originalAlt: string, thumbnailAlt: string }> } };
+
+export type GetCottageImgsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetCottageImgsQuery = { __typename?: 'Query', getCottageImgs: { __typename?: 'cottageImgPack', headerUrl: string, galleryArray: Array<{ __typename?: 'imageObject', original: string, thumbnail: string, originalAlt: string, thumbnailAlt: string }> } };
+
+export type GetAboutPgImgQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAboutPgImgQuery = { __typename?: 'Query', getAboutPgImg: string };
+
+export type GetPropertyInfoQueryVariables = Exact<{
+  _id: Scalars['ID']['input'];
+}>;
+
+
+export type GetPropertyInfoQuery = { __typename?: 'Query', getPropertyInfo: { __typename?: 'Property', _id: string, propertyName: string, propertyDescription: string, headerImgKey: string, amenities: Array<{ __typename?: 'Amenity', amenityName: string, amenityType: string }> } };
+
+export type GetPropertiesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetPropertiesQuery = { __typename?: 'Query', getProperties: Array<{ __typename?: 'Property', _id: string, propertyName: string, propertyDescription: string, headerImgKey: string, amenities: Array<{ __typename?: 'Amenity', amenityName: string, amenityType: string }> }> };
+
+export type GetPresignedS3UrlQueryVariables = Exact<{
+  imgKey: Scalars['String']['input'];
+  commandType: Scalars['String']['input'];
+  altTag: Scalars['String']['input'];
+}>;
+
+
+export type GetPresignedS3UrlQuery = { __typename?: 'Query', getPresignedS3Url: string };
